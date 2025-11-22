@@ -1,1 +1,69 @@
-<p>home works!</p>
+<div class="container-fluid home-hero py-5">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-lg-6 animate__animated animate__fadeInLeft">
+        <h1 class="display-5 fw-bold">Enquiry Management Made Simple</h1>
+        <p class="lead mt-3 text-muted">Track, categorize and resolve customer enquiries efficiently with a lightweight, focused interface.</p>
+        <ul class="list-unstyled mt-4">
+          <li class="mb-2"><i class="bi bi-lightning-fill text-primary me-2"></i><strong>Fast:</strong> Capture enquiries quickly and route them instantly.</li>
+          <li class="mb-2"><i class="bi bi-folder-fill text-primary me-2"></i><strong>Organized:</strong> Categories and status workflows keep things tidy.</li>
+          <li class="mb-2"><i class="bi bi-people-fill text-primary me-2"></i><strong>Collaborative:</strong> Share and assign enquiries to your team.</li>
+        </ul>
+        <p class="mt-4">
+          <button class="btn btn-primary btn-lg me-2 shadow-sm" (click)="onGetStarted()"><i class="bi bi-rocket-takeoff-fill me-2"></i>Get Started</button>
+          <a class="btn btn-outline-primary btn-lg" href="#features">Learn more</a>
+        </p>
+      </div>
+
+      <div class="col-lg-6 animate__animated animate__fadeInRight text-center">
+        <div class="mock-panel p-4 rounded shadow bg-white d-inline-block">
+          <h4 class="mb-3">Snapshot</h4>
+          <p class="mb-0 text-muted">Open enquiries: <span class="badge bg-danger">7</span></p>
+          <p class="mb-0 text-muted">Resolved today: <span class="badge bg-success">12</span></p>
+          <div class="mt-3 dashboard-graphic mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="features" class="container my-5">
+  <div class="row g-4">
+    <div class="col-md-4 animate__animated animate__zoomIn">
+      <div class="card h-100 border-0 shadow-sm feature-card">
+        <div class="card-body">
+          <div class="feature-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"><i class="bi bi-folder-fill"></i></div>
+          <h5 class="card-title">Categorization</h5>
+          <p class="card-text text-muted">Create and manage categories to keep enquiries organized by topic or priority.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 animate__animated animate__zoomIn animate__delay-1s">
+      <div class="card h-100 border-0 shadow-sm feature-card">
+        <div class="card-body">
+          <div class="feature-icon bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"><i class="bi bi-info-circle-fill"></i></div>
+          <h5 class="card-title">Status Tracking</h5>
+          <p class="card-text text-muted">Use status workflows (Open, In Progress, Resolved) to follow progress at a glance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 animate__animated animate__zoomIn animate__delay-2s">
+      <div class="card h-100 border-0 shadow-sm feature-card">
+        <div class="card-body">
+          <div class="feature-icon bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"><i class="bi bi-people-fill"></i></div>
+          <h5 class="card-title">Team Assignment</h5>
+          <p class="card-text text-muted">Assign enquiries to team members and keep accountability clear.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary text-white py-5">
+  <div class="container text-center">
+    <h3 class="mb-3 animate__animated animate__pulse animate__infinite">Ready to improve your enquiry workflow?</h3>
+    <button class="btn btn-light btn-lg" (click)="onGetStarted()">Start a free trial</button>
+  </div>
+</section>

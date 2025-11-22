@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrl: './home.css',
 })
 export class Home {
+  isLoggedIn = false;
+  username = '';
+
+  login() {
+    this.isLoggedIn = true;
+    this.username = 'User';
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    this.username = '';
+  }
+
+  onGetStarted() {
+    // Placeholder - can route to signup or open modal
+    alert('Get started clicked');
+  }
 
 }
