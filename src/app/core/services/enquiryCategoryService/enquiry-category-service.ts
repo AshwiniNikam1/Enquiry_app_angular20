@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Iapiresponse } from '../../modals/interfaceModal/apiResponse';
+import { Iapiresponse } from '../../modals/interfaceModal/apiResponse.model';
 import { environment } from '../../../../environments/environment';
 import { APIConstants } from '../../constants/constant';
-import { ICategory } from '../../modals/interfaceModal/enquiryCategory';
+import { ICategory } from '../../modals/interfaceModal/enquiryCategory.model';
 
 @Injectable({
   providedIn: 'root',

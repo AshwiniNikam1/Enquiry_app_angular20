@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { APIConstants } from '../../constants/constant';
-import { EnquiryModal } from '../../modals/classModal/enquiryClass';
+import { EnquiryModal } from '../../modals/classModal/enquiryClass.model';
 import { Observable } from 'rxjs';
-import { Iapiresponse } from '../../modals/interfaceModal/apiResponse';
+import { Iapiresponse } from '../../modals/interfaceModal/apiResponse.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ import { Iapiresponse } from '../../modals/interfaceModal/apiResponse';
 export class EnquiryService {
   constructor(private http: HttpClient) {}
 
-  getAllQueries() {
+  getAllEnquries() {
     return this.http.get(
       environment.API_URL +
         APIConstants.CONTROLLER_TYPES.ENQUIRY +
@@ -21,6 +21,7 @@ export class EnquiryService {
   }
 
   createEnquiry(payload: EnquiryModal): Observable<Iapiresponse> {
+  console.log('payload', payload);
     return this.http.post<Iapiresponse>(
       environment.API_URL +
         APIConstants.CONTROLLER_TYPES.ENQUIRY +
