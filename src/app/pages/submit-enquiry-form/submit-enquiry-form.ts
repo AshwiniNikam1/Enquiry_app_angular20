@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { EnquiryCategoryService } from '../../core/services/enquiryCategoryService/enquiry-category-service';
 import { EnquiryStatusService } from '../../core/services/enquiryStatusService/enquiry-status-service';
-import { Iapiresponse } from '../../core/modals/interfaceModal/apiResponse.model';
-import { ICategory } from '../../core/modals/interfaceModal/enquiryCategory.model';
-import { Istatus } from '../../core/modals/interfaceModal/enquiryStatus.model';
+import { Iapiresponse } from '../../core/modals/interfaceModal/master.model';
+import { ICategory } from '../../core/modals/interfaceModal/master.model';
+import { Istatus } from '../../core/modals/interfaceModal/master.model';
 import { CommonModule } from '@angular/common';
 import { EnquiryModal } from '../../core/modals/classModal/enquiryClass.model';
 import { FormsModule } from '@angular/forms';

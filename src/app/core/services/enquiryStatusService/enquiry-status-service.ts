@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Iapiresponse } from '../../modals/interfaceModal/apiResponse.model';
-import { Istatus } from '../../modals/interfaceModal/enquiryStatus.model';
+import { Iapiresponse } from '../../modals/interfaceModal/master.model';
+import { Istatus } from '../../modals/interfaceModal/master.model';
 import { environment } from '../../../../environments/environment';
 import { APIConstants } from '../../constants/constant';
 

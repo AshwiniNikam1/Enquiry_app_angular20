@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { APIConstants } from '../../constants/constant';
 import { EnquiryModal } from '../../modals/classModal/enquiryClass.model';
 import { Observable } from 'rxjs';
-import { Iapiresponse } from '../../modals/interfaceModal/apiResponse.model';
+import { Iapiresponse } from '../../modals/interfaceModal/master.model';
 
 @Injectable({
   providedIn: 'root',
