@@ -1,0 +1,76 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* GRID layout for multiple cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge-warning {
+  background: #ff9800;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.label {
+  font-weight: bold;
+  color: #444;
+  margin-right: 5px;
+}
+
+.info {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.card-footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-view { background: #009688; color: white; }
+.btn-edit { background: #607d8b; color: white; }
+.btn-delete { background: #d32f2f; color: white; }

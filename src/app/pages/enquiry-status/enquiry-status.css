@@ -1,0 +1,8 @@
+.status-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(12, 10, 10, 0.15);
+}

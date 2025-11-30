@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { EnquiryModal } from '../../core/modals/classModal/enquiryClass.model';
 import { FormsModule } from '@angular/forms';
 import { EnquiryService } from '../../core/services/enquiryService/enquiry-service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-submit-enquiry-form',
@@ -22,32 +23,46 @@ export class SubmitEnquiryForm implements OnInit {
 
   categoriesList: ICategory[] = [];
   statusList: Istatus[] = [];
-   newEnquiryObj:EnquiryModal=new EnquiryModal();
-  // newEnquiryObj: any = {
-  //   "enquiryId": 0,
-  //   "customerName": '',
-  //   "customerEmail": '',
-  //   "customerPhone": '',
-  //   "message": '',
-  //   "categoryId": 0, // number
-  //   "statusId": 0, // number
-  //   "enquiryType": '',
-  //   "isConverted": false, // boolean
-  //   "enquiryDate": new Date(),
-  //   "followUpDate": new Date(),
-  //   "feedback": '',
-  // }
+  activeStatus: Istatus[] = [];
+  activeCategories: ICategory[] = [];
+  newEnquiryObj: EnquiryModal = new EnquiryModal();
+
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+
+  isEditMode: boolean = false;
+
   constructor() {}
+
   ngOnInit(): void {
     this.getAllCategories();
     this.getAllStatus();
+    /** Check if in edit mode by looking for enquiry id in route params */
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id) {
+      this.isEditMode = true;
+      this.getEnquiryById(id); // Fetch data for edit mode
+    }
   }
+
+  /** Get enquiry by id for edit mode */
+  getEnquiryById(id: number) {
+    this.enquiryFormService.getEnquiryById(id).subscribe({
+      next: (res: any) => {
+        this.newEnquiryObj = res.data; // auto-fill form
+      },
+      error: () => {
+        alert('Failed to load enquiry');
+      },
+    });
+  }
+
   /** Get all caterories list  */
   getAllCategories() {
     this.enquiryCategoryService.getAllCategories().subscribe({
       next: (res: Iapiresponse) => {
         this.categoriesList = res.data;
-        console.log('this.categoriesList', this.categoriesList);
+        this.activeCategories = this.categoriesList.filter((c) => c.isActive);
       },
       error: (err: Iapiresponse) => {},
     });
@@ -58,21 +73,57 @@ export class SubmitEnquiryForm implements OnInit {
     this.enquiryStatusService.getAllStatus().subscribe({
       next: (res: Iapiresponse) => {
         this.statusList = res.data;
+        this.activeStatus = this.statusList.filter((status) => status.isActive);
       },
       error: (err: Iapiresponse) => {},
     });
   }
-  /** To save the enquiries form details */
-  onSubmitEnquiry() {
+
+  /** To create enquiry */
+  createEnquiry() {
     this.enquiryFormService.createEnquiry(this.newEnquiryObj).subscribe({
       next: (res: Iapiresponse) => {
-         if (res.result) {
+        if (res.result) {
           alert('Enquiry submitted successfully');
+          this.router.navigateByUrl('/enquiry-list');
         }
       },
       error: (err: Iapiresponse) => {
-        alert('Error submitting enquiry');
+        alert('Error submitting enquiry: ' + err.message);
       },
     });
+  }
+
+  /** To save the enquiries form details */
+  onSubmitEnquiry() {
+    this.newEnquiryObj.statusId='1';
+    if (this.newEnquiryObj.enquiryId > 0 && this.isEditMode) {
+      // UPDATE mode
+      this.updateEnquiry();
+    } else {
+      // CREATE mode
+      this.createEnquiry();
+    }
+  }
+
+  /** To update the enquiries form details */
+  updateEnquiry() {
+    const payload = { ...this.newEnquiryObj };
+    this.enquiryFormService.updateEnquiry(payload).subscribe({
+      next: (res: any) => {
+        if (res.result) {
+          alert('enquiry updated successfully');
+          this.router.navigate(['/enquiry-list']);
+        }
+      },
+      error: (err: Iapiresponse) => {
+        alert('error updating enquiry: ' + err.message);
+      },
+    });
+  }
+
+  /** To reset the form */
+  reset() {
+    this.newEnquiryObj = new EnquiryModal();
   }
 }

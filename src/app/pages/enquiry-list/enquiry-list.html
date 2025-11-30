@@ -1,0 +1,28 @@
+<div class="container-fluid py-5">
+  <div class="page-title">Enquiry List</div>
+
+  <div class="card-grid">
+    @for(enquiry of enquiryList; track $index) {
+      <div class="card">
+        <div class="card-header">
+          <h2>{{ enquiry.customerName }}</h2>
+          <span class="badge badge-warning">Pending</span>
+        </div>
+
+        <p class="info"><span class="label">Email:</span> {{ enquiry.customerEmail }}</p>
+        <p class="info"><span class="label">Phone:</span> {{ enquiry.customerPhone }}</p>
+        <p class="info"><span class="label">Enquiry Type:</span> {{ enquiry.enquiryType }}</p>
+        <p class="info"><span class="label">Message:</span> {{ enquiry.message }}</p>
+        <p class="info"><span class="label">Enquiry Date:</span> {{ enquiry.enquiryDate }}</p>
+        <p class="info"><span class="label">Follow-up Date:</span> {{ enquiry.followUpDate }}</p>
+        <p class="info"><span class="label">Feedback:</span> {{ enquiry.feedback }}</p>
+
+        <div class="card-footer">
+          <button class="btn btn-view">View</button>
+          <button class="btn btn-edit" (click)="onUpdateEnquiry(enquiry)">Edit</button>
+          <button class="btn btn-delete" (click)="onDelete(enquiry.enquiryId)">Delete</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

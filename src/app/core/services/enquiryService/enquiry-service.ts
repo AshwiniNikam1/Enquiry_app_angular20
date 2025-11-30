@@ -12,8 +12,9 @@ import { Iapiresponse } from '../../modals/interfaceModal/master.model';
 export class EnquiryService {
   constructor(private http: HttpClient) {}
 
-  getAllEnquries() {
-    return this.http.get(
+  getAllEnquries():Observable<Iapiresponse> {
+    return this.http.get<
+    Iapiresponse>(
       environment.API_URL +
         APIConstants.CONTROLLER_TYPES.ENQUIRY +
         APIConstants.ENQUIRY.GET_ENQUIRIES
@@ -31,11 +32,12 @@ export class EnquiryService {
   }
 
   updateEnquiry(payload: EnquiryModal): Observable<Iapiresponse> {
+    console.log("updateEnquiry service", payload);
     return this.http.put<Iapiresponse>(
       environment.API_URL +
         APIConstants.CONTROLLER_TYPES.ENQUIRY +
         APIConstants.ENQUIRY.UPDATE_ENQUIRY +
-        payload.statusId,
+        payload.enquiryId,
       payload
     );
   }
